@@ -21,7 +21,7 @@ Authors@R: c(
 Description: Reading, writing, manipulating, analyzing and modeling of gridded spatial data. The package implements basic and high-level functions. Processing of very large files is supported.
 License: GPL (>= 3)
 URL: http://cran.r-project.org/web/packages/raster/
-ByteCompile: FALSE
+ByteCompile: TRUE
 NeedsCompilation: yes
 Packaged: 2015-04-11 04:07:58 UTC; rhijmans
 Author: Robert J. Hijmans [cre, aut],

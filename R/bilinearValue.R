@@ -8,18 +8,8 @@
 
 .bilinearValue <- function(raster, xyCoords, layer, n) {
 
-
-	bilinear_old <- function(x, y, x1, x2, y1, y2, v) {
-		v <- v / ((x2-x1)*(y2-y1))
-		return( v[,1]*(x2-x)*(y2-y) + v[,3]*(x-x1)*(y2-y) + v[,2]*(x2-x)*(y-y1) + v[,4]*(x-x1)*(y-y1) )
-		#div <- (x2-x1)*(y2-y1)
-		#return ( (v[,1]/div)*(x2-x)*(y2-y) + (v[,3]/div)*(x-x1)*(y2-y) + (v[,2]/div)*(x2-x)*(y-y1) + (v[,4]/div)*(x-x1)*(y-y1) )
-	}
-
 	bilinear <- function(xy, x, y, v) {
-		v <- v / ((x[2,]-x[1,])*(y[2,]-y[1,]))
-		return(	v[,1]*(x[2,]-xy[,1])*(y[2,]-xy[,2]) + v[,3]*(xy[,1]-x[1,])*(y[2,]-xy[,2]) +
-				v[,2]*(x[2,]-xy[,1])*(xy[,2]-y[1,]) + v[,4]*(xy[,1]-x[1,])*(xy[,2]-y[1,]) )
+		doBilinear(xy, x, y, v)
 	}
 
 	r <- raster(raster)
