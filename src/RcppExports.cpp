@@ -68,3 +68,22 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
+// doFourCellsFromXY
+IntegerMatrix doFourCellsFromXY(int ncols, int nrows, double xmin, double xmax, double ymin, double ymax, NumericMatrix xy, bool duplicates, bool isGlobalLonLat);
+RcppExport SEXP raster_doFourCellsFromXY(SEXP ncolsSEXP, SEXP nrowsSEXP, SEXP xminSEXP, SEXP xmaxSEXP, SEXP yminSEXP, SEXP ymaxSEXP, SEXP xySEXP, SEXP duplicatesSEXP, SEXP isGlobalLonLatSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< int >::type ncols(ncolsSEXP);
+    Rcpp::traits::input_parameter< int >::type nrows(nrowsSEXP);
+    Rcpp::traits::input_parameter< double >::type xmin(xminSEXP);
+    Rcpp::traits::input_parameter< double >::type xmax(xmaxSEXP);
+    Rcpp::traits::input_parameter< double >::type ymin(yminSEXP);
+    Rcpp::traits::input_parameter< double >::type ymax(ymaxSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type xy(xySEXP);
+    Rcpp::traits::input_parameter< bool >::type duplicates(duplicatesSEXP);
+    Rcpp::traits::input_parameter< bool >::type isGlobalLonLat(isGlobalLonLatSEXP);
+    __result = Rcpp::wrap(doFourCellsFromXY(ncols, nrows, xmin, xmax, ymin, ymax, xy, duplicates, isGlobalLonLat));
+    return __result;
+END_RCPP
+}

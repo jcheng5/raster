@@ -17,3 +17,7 @@ doXYFromCell <- function(ncols, nrows, xmin, xmax, ymin, ymax, cell) {
     .Call('raster_doXYFromCell', PACKAGE = 'raster', ncols, nrows, xmin, xmax, ymin, ymax, cell)
 }
 
+doFourCellsFromXY <- function(ncols, nrows, xmin, xmax, ymin, ymax, xy, duplicates, isGlobalLonLat) {
+    .Call('raster_doFourCellsFromXY', PACKAGE = 'raster', ncols, nrows, xmin, xmax, ymin, ymax, xy, duplicates, isGlobalLonLat)
+}
+
