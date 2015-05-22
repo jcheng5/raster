@@ -5,8 +5,8 @@ doBilinear <- function(xy, x, y, v) {
     .Call('raster_doBilinear', PACKAGE = 'raster', xy, x, y, v)
 }
 
-doCellFromRowCol <- function(nrow, ncol, rownr, colnr, result) {
-    invisible(.Call('raster_doCellFromRowCol', PACKAGE = 'raster', nrow, ncol, rownr, colnr, result))
+doCellFromRowCol <- function(nrow, ncol, rownr, colnr) {
+    .Call('raster_doCellFromRowCol', PACKAGE = 'raster', nrow, ncol, rownr, colnr)
 }
 
 doCellFromXY <- function(ncols, nrows, xmin, xmax, ymin, ymax, x, y) {

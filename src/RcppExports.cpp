@@ -20,17 +20,17 @@ BEGIN_RCPP
 END_RCPP
 }
 // doCellFromRowCol
-void doCellFromRowCol(IntegerVector nrow, IntegerVector ncol, IntegerVector rownr, IntegerVector colnr, IntegerVector result);
-RcppExport SEXP raster_doCellFromRowCol(SEXP nrowSEXP, SEXP ncolSEXP, SEXP rownrSEXP, SEXP colnrSEXP, SEXP resultSEXP) {
+IntegerVector doCellFromRowCol(IntegerVector nrow, IntegerVector ncol, IntegerVector rownr, IntegerVector colnr);
+RcppExport SEXP raster_doCellFromRowCol(SEXP nrowSEXP, SEXP ncolSEXP, SEXP rownrSEXP, SEXP colnrSEXP) {
 BEGIN_RCPP
+    Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
     Rcpp::traits::input_parameter< IntegerVector >::type nrow(nrowSEXP);
     Rcpp::traits::input_parameter< IntegerVector >::type ncol(ncolSEXP);
     Rcpp::traits::input_parameter< IntegerVector >::type rownr(rownrSEXP);
     Rcpp::traits::input_parameter< IntegerVector >::type colnr(colnrSEXP);
-    Rcpp::traits::input_parameter< IntegerVector >::type result(resultSEXP);
-    doCellFromRowCol(nrow, ncol, rownr, colnr, result);
-    return R_NilValue;
+    __result = Rcpp::wrap(doCellFromRowCol(nrow, ncol, rownr, colnr));
+    return __result;
 END_RCPP
 }
 // doCellFromXY

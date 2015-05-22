@@ -14,12 +14,12 @@ IntegerVector doCellFromXY(
   IntegerVector result(len);
   
   for (size_t i = 0; i < len; i++) {
-    double row = static_cast<size_t>((ymax - y[i]) * yres_inv) + 1;
-    double col = static_cast<size_t>((x[i] - xmin) * xres_inv) + 1;
-    if (row < 1 || row > nrows || col < 1 || col > ncols) {
+    double row = (ymax - y[i]) * yres_inv;
+    double col = (x[i] - xmin) * xres_inv;
+    if (row < 0 || row >= nrows || col < 0 || col >= ncols) {
       result[i] = NA_INTEGER;
     } else {
-      result[i] = (row-1) * ncols + col;
+      result[i] = static_cast<int>(row) * ncols + static_cast<int>(col) + 1;
     }
   }
   
@@ -39,11 +39,11 @@ NumericMatrix doXYFromCell(
   NumericMatrix result(len, 2);
   
   for (size_t i = 0; i < len; i++) {
-    int c = cell[i];
+    int c = cell[i] - 1;
     size_t col = c % ncols;
-    size_t row = (c / ncols) + 1;
-    result(i,0) = (col - 1) * xres + xmin;
-    result(i,1) = -((row - 1) * yres - ymax);
+    size_t row = (c / ncols);
+    result(i,0) = (col + 0.5) * xres + xmin;
+    result(i,1) = -((row + 0.5) * yres - ymax);
   }
   
   return result;

@@ -85,9 +85,7 @@ cellFromRowCol <- function(object, rownr, colnr) {
 	object <- raster(object)
 	rows <- nrow(object)
 	cols <- ncol(object)
-	result <- integer(max(length(rownr), length(colnr)))
-	doCellFromRowCol(rows, cols, rownr, colnr, result)
-	result
+	doCellFromRowCol(rows, cols, rownr, colnr)
 }
 
 

@@ -2,13 +2,15 @@
 using namespace Rcpp;
 
 // [[Rcpp::export]]
-void doCellFromRowCol(IntegerVector nrow, IntegerVector ncol,
-  IntegerVector rownr, IntegerVector colnr, IntegerVector result) {
+IntegerVector doCellFromRowCol(IntegerVector nrow, IntegerVector ncol,
+  IntegerVector rownr, IntegerVector colnr) {
 
   int nr = nrow[0];
   int nc = ncol[0];
   size_t rownr_size = rownr.size();
   size_t colnr_size = colnr.size();
+  
+  IntegerVector result(std::max(rownr_size, colnr_size));
 
   // Manually recycle the shorter of rownr/colnr to match the other
   size_t len = std::max(rownr.size(), colnr.size());
@@ -21,4 +23,6 @@ void doCellFromRowCol(IntegerVector nrow, IntegerVector ncol,
     // Detect out-of-bounds rows/cols and use NA for those
     result[i] = (r<1 || r>nr || c<1 || c>nc) ? NA_INTEGER : (r-1) * nc + c;
   }
+  
+  return result;
 }
